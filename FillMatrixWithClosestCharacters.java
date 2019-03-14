@@ -86,7 +86,7 @@ public class FillMatrixWithClosestCharacters {
     
     private void fill(char[][] input, int x, int y, Map<String, Integer> dist, char[][] output, Map<String, Boundary> boundaryMap){
         int[][] dr = new int[][] {{0,1},{0,-1},{1,0},{-1,0}};
-        Boundary boundary = boundaryMap.getOrDefault(x+"."+y, new Boundary());
+        Boundary boundary = boundaryMap.getOrDefault(x+","+y, new Boundary());
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[] {x,y});
         int distance = 0;
@@ -139,11 +139,11 @@ public class FillMatrixWithClosestCharacters {
         }else if(nx<x&&ny==y&&nx>boundary.left) {
             boundary.left=nx;
         }else if(nx>x&&ny==y&&nx<boundary.right) {
-            boundary.right=ny;
+            boundary.right=nx;
         }else if(nx==x&&ny<y&&ny>boundary.top) {
-            boundary.top=y;
+            boundary.top=ny;
         }else if(nx==x&&ny>y&&ny<boundary.bottom) {
-            boundary.bottom=y;
+            boundary.bottom=ny;
         }
     }
     
